@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.o7planning.knfood.Login.LoginActivity;
 import org.o7planning.knfood.Menu.MenuActivity;
+import org.o7planning.knfood.Model.DBHelper;
+import org.o7planning.knfood.SQLite.SQLiteHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,9 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        DBHelper dbHelper = new DBHelper(this);
-//        SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        db.close();
+        SQLiteHelper SQLiteHelper = new SQLiteHelper(this);
+        SQLiteDatabase readableDatabase = SQLiteHelper.getReadableDatabase();
+        readableDatabase.close();
         logo = findViewById(R.id.logo);
         logo.setOnClickListener(this);
 //        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

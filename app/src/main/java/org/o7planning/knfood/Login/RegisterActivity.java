@@ -1,23 +1,15 @@
 package org.o7planning.knfood.Login;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.o7planning.knfood.R;
-import org.o7planning.knfood.SQLite.TAIKHOANDAO;
 import org.o7planning.knfood.base.BaseActivity;
 import org.o7planning.knfood.viewmodel.RegisterViewModel;
 
@@ -52,7 +44,6 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_dangky:
-                TAIKHOANDAO tkdao = new TAIKHOANDAO(this);
                 String user = username.getText().toString();
                 String name = displayname.getText().toString();
                 String pass = password.getText().toString();
@@ -61,12 +52,6 @@ public class RegisterActivity extends BaseActivity<RegisterViewModel> implements
                     Toast.makeText(this, "Vui lòng điền vào tất cả thông tin", Toast.LENGTH_LONG).show();
                 } else {
 
-//                            TAIKHOAN tk = new TAIKHOAN();
-//                            tk.setUserName(username.getText().toString());
-//                            tk.setPassWord(password.getText().toString());
-//                            tk.setDisplayName(displayname.getText().toString());
-//                            tkdao.insertAccount(tk);
-                           // registerAccount(username.getText().toString(),password.getText().toString());
                     mModel.handleSignUp(user, pass, name);
                     mModel.getIsRegis().observe(this, new Observer<Boolean>() {
                         @Override
