@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.o7planning.knfood.Login.LoginActivity;
 import org.o7planning.knfood.Menu.MenuActivity;
-import org.o7planning.knfood.Model.DBHelper;
 import org.o7planning.knfood.SQLite.SQLiteHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
